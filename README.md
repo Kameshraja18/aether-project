@@ -1,22 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Project Marketplace
+
+A modern, full-stack marketplace for buying and selling creative projects built with Next.js 15, TypeScript, and Tailwind CSS.
+
+## Features
+
+- 🛒 **Project Marketplace**: Browse and purchase creative projects
+- 🎨 **Category Filtering**: Find projects by type and specialty
+- 💳 **Secure Payments**: Integrated payment processing
+- 👤 **User Accounts**: Seller and buyer dashboards
+- 📱 **Responsive Design**: Works perfectly on all devices
+- ⚡ **Fast Performance**: Built with Next.js 15 and optimized for speed
+
+## Tech Stack
+
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
 
 ## Getting Started
 
-First, run the development server:
+First, install dependencies:
+
+```bash
+npm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the marketplace.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
