@@ -44,7 +44,31 @@ export const cseProjectsData: ProjectsData = {
       year: "2024"
     },
   ],
- 
+  
+  "Machine Learning": [
+    {
+      id: "proj-ml-brain-tumor-001",
+      project_title: "Brain Tumor Detection System",
+      project_description: "An interactive web application for detecting brain tumors from MRI scans using convolutional neural networks (CNNs). Built with Streamlit for a user-friendly interface, it allows image uploads, real-time predictions, and visualization of tumor regions with confidence scores.",
+      tags: ["Machine Learning", "Streamlit", "Brain Tumor Detection", "CNN", "Medical AI"],
+      cover_image: "https://miro.medium.com/v2/resize:fit:925/0*DjV3yTE0jtph7P9b.png",
+      completion_date: "2025-09-15",
+      client_name: "MedAI Labs",
+      client_image: "/source/companies/medai-logo.png",
+      client_feedback: "Impressive accuracy and ease of use. This tool has streamlined our diagnostic workflow—truly innovative for healthcare AI!",
+      project_link: "https://github.com/username/brain-tumor-detection",
+      demo_video: "https://youtu.be/brain-tumor-demo-video-id",
+      project_images: [
+        "/source/brain-tumor-screenshot1.jpg",
+        "/source/brain-tumor-screenshot2.jpg",
+        "/source/brain-tumor-screenshot3.jpg"
+      ],
+      category: "Machine Learning",
+      development_time: "2 months",
+      tech_stack: ["Streamlit", "Python", "TensorFlow", "Keras", "OpenCV"],
+      year: "2025"
+    }
+  ],
 };
 
 // Helper functions for working with the projects data
