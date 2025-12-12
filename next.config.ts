@@ -38,14 +38,8 @@ const nextConfig: NextConfig = {
         hostname: 'dcassetcdn.com',
         port: '',
         pathname: '/**',
-        {
-        protocol: 'https',
-        hostname: 'miro.medium.com',
-        port: '',
-        pathname: '/**',
       },
-      },
-       {
+      {
         protocol: 'https',
         hostname: 'miro.medium.com',
         port: '',
