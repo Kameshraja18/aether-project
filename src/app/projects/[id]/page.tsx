@@ -49,17 +49,13 @@ const getProjectData = (id: string) => {
     },
     images: project.project_images.length > 0 ? project.project_images : ['/source/b1.png'],
     description: project.project_description,
-    features: [
-      'Ethereum smart contracts for immutable voting',
-      'MySQL database for user authentication',
-      'Real-time polling and results verification',
-      'Voter registration system',
-      'Tamper-proof audit trails',
-      'Web3 wallet integration',
-      'Cryptographic vote verification',
-      'Admin dashboard for election management',
-      'Multi-signature security features',
-      'Comprehensive documentation and deployment guide'
+    features: project.features || [
+      'Detailed documentation',
+      'Full source code included',
+      'Setup instructions',
+      'Video walkthrough',
+      'Technical support',
+      'Clean and modern code'
     ],
     deliveryTime: '14-21 days',
     revisions: 'Unlimited revisions included'

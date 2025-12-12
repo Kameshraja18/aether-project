@@ -102,7 +102,7 @@ const milestones = [
     title: 'Team Expansion',
     description: 'Grew our expert team to 15+ specialists across multiple technology domains.'
   },
-  
+
 ]
 
 const achievements = [
@@ -117,12 +117,12 @@ export default function AboutPage() {
 
   const storyImages = [
     {
-      src: "https://media.licdn.com/dms/image/v2/D5603AQEAOa9KhVb3iw/profile-displayphoto-crop_800_800/B56ZhvocNnHkAI-/0/1754219531553?e=1762387200&v=beta&t=ifsNMdec6S6MMzIURKAAcB31aOUJ3k15YOQ9mxJN7zM",
-      alt: "Our Story - Aether Projects Founder"
+      src: "/founder.png",
+      alt: "Aether Projects Founder"
     },
     {
-      src: "https://dcassetcdn.com/design_img/4036093/67150/30400600/dyjzyywy8hpcpw0qvn8xx220q9_image.jpg",
-      alt: "Our Story - Aether Projects Journey"
+      src: "/office-branding.png",
+      alt: "Aether Projects Headquarters"
     }
   ]
 
@@ -224,9 +224,8 @@ export default function AboutPage() {
                       <button
                         key={index}
                         onClick={() => setCurrentSlide(index)}
-                        className={`w-2 h-2 rounded-full transition-colors ${
-                          index === currentSlide ? 'bg-white' : 'bg-white/50'
-                        }`}
+                        className={`w-2 h-2 rounded-full transition-colors ${index === currentSlide ? 'bg-white' : 'bg-white/50'
+                          }`}
                         aria-label={`Go to image ${index + 1}`}
                       />
                     ))}
@@ -370,7 +369,7 @@ export default function AboutPage() {
             <div className="space-y-12">
               {milestones.map((milestone, index) => (
                 <motion.div
-                  key={milestone.year}
+                  key={milestone.title}
                   initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}

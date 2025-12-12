@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Card, CardContent } from '@/components/ui/card'
+import SpotlightCard from '@/components/ui/SpotlightCard'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
@@ -133,16 +134,17 @@ export default function VideoGrid() {
                 stiffness: 100
               }}
               whileHover={{
-                y: -8,
-                transition: { duration: 0.2 }
+                y: -12,
+                transition: { duration: 0.3 }
               }}
               className="group"
             >
-              <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-500 border-0 bg-gradient-to-br from-card to-card/50 backdrop-blur-sm h-full">
-                <div className="relative aspect-video overflow-hidden rounded-t-lg">
+              <SpotlightCard className="h-full bg-[#0f0f2a]/80 backdrop-blur-xl border-white/10 hover:border-primary/50 transition-colors duration-500">
+                <div className="relative aspect-video overflow-hidden rounded-t-xl">
                   <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.3 }}
+                    whileHover={{ scale: 1.15 }}
+                    transition={{ duration: 0.5 }}
+                    className="h-full w-full"
                   >
                     <Image
                       src={project.cover_image}
@@ -151,17 +153,19 @@ export default function VideoGrid() {
                       className="object-cover"
                     />
                   </motion.div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a1f] via-transparent to-transparent opacity-90" />
+
                   <motion.div
                     className="absolute top-3 left-3"
                     initial={{ x: -20, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: index * 0.1 + 0.3 }}
                   >
-                    <Badge variant="secondary" className="bg-black/70 text-white border-0">
+                    <Badge variant="secondary" className="glass bg-black/60 text-white border border-white/10 backdrop-blur-md">
                       {project.category}
                     </Badge>
                   </motion.div>
+
                   <motion.div
                     className="absolute top-3 right-3"
                     initial={{ x: 20, opacity: 0 }}
@@ -169,39 +173,40 @@ export default function VideoGrid() {
                     transition={{ delay: index * 0.1 + 0.4 }}
                   >
                     {project.featured && (
-                      <Badge variant="destructive" className="bg-primary hover:bg-primary/90 shadow-lg">
-                        <Star className="h-3 w-3 mr-1" />
+                      <Badge variant="destructive" className="bg-amber-500 text-black font-bold shadow-[0_0_15px_rgba(245,158,11,0.6)] border-0 animate-pulse">
+                        <Star className="h-3 w-3 mr-1 fill-black" />
                         Featured
                       </Badge>
                     )}
                   </motion.div>
-                  <motion.div
-                    className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    initial={{ y: 20, opacity: 0 }}
-                    whileHover={{ y: 0, opacity: 1 }}
-                  >
-                    <Button size="sm" className="w-full bg-white/90 text-black hover:bg-white shadow-lg" asChild>
+
+                  <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-black/80 backdrop-blur-md border-t border-white/10">
+                    <Button size="sm" className="w-full bg-white text-black hover:bg-gray-200 hover:scale-105 transition-all duration-300" asChild>
                       <Link href={`/projects/${project.id}`}>
                         <Eye className="h-4 w-4 mr-2" />
                         View Project
                       </Link>
                     </Button>
-                  </motion.div>
+                  </div>
                 </div>
-                <CardContent className="p-6 flex-1 flex flex-col">
+
+                <div className="p-6 flex-1 flex flex-col relative h-full">
+                  {/* Subtle glow effect behind content */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 rounded-full blur-3xl -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
                   <motion.div
                     className="flex items-start justify-between mb-3"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 + 0.5 }}
                   >
-                    <h3 className="font-semibold text-lg line-clamp-2 group-hover:text-primary transition-colors duration-300 flex-1">
+                    <h3 className="font-bold text-xl line-clamp-2 text-white group-hover:text-primary transition-colors duration-300 flex-1 drop-shadow-lg">
                       {project.project_title}
                     </h3>
                   </motion.div>
 
                   <motion.p
-                    className="text-sm text-muted-foreground mb-4 line-clamp-3 flex-1"
+                    className="text-sm text-gray-300 mb-6 line-clamp-3 flex-1 leading-relaxed font-light"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: index * 0.1 + 0.6 }}
@@ -210,30 +215,24 @@ export default function VideoGrid() {
                   </motion.p>
 
                   <motion.div
-                    className="flex flex-wrap gap-1 mb-4"
+                    className="flex flex-wrap gap-2 mb-6"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: index * 0.1 + 0.8 }}
                   >
                     {project.tech_stack.slice(0, 3).map((tech, tagIndex) => (
-                      <motion.div
+                      <Badge
                         key={tech}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.1 + 0.8 + tagIndex * 0.1 }}
+                        variant="outline"
+                        className="text-xs border-white/10 text-gray-300 bg-white/5 hover:bg-white/20 hover:text-white transition-all duration-300 hover:border-primary/30"
                       >
-                        <Badge
-                          variant="outline"
-                          className="text-xs hover:bg-primary/10 transition-colors duration-200"
-                        >
-                          {tech}
-                        </Badge>
-                      </motion.div>
+                        {tech}
+                      </Badge>
                     ))}
                   </motion.div>
 
                   <motion.div
-                    className="flex items-center justify-between text-xs text-muted-foreground mt-auto"
+                    className="flex items-center justify-between text-xs text-gray-400 mt-auto pt-4 border-t border-white/5"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: index * 0.1 + 1.0 }}
@@ -247,8 +246,8 @@ export default function VideoGrid() {
                       {project.year}
                     </div>
                   </motion.div>
-                </CardContent>
-              </Card>
+                </div>
+              </SpotlightCard>
             </motion.div>
           ))}
         </div>

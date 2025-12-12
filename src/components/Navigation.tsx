@@ -21,24 +21,24 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-md border-b z-50">
+    <nav className="fixed top-0 w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Link href="/" className="flex items-center space-x-2">
+            <Link href="/" className="flex items-center space-x-3">
               <Image
                 src="/logo.png"
                 alt="Aether Projects Logo"
                 width={40}
                 height={40}
-                className="rounded-md"
-                unoptimized={true}
+                className="rounded-md object-contain"
+                unoptimized
               />
-              <span className="text-xl font-bold bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
+              <span className="text-xl font-bold text-gray-900 tracking-tight">
                 Aether Projects
               </span>
             </Link>
@@ -57,20 +57,10 @@ export default function Navigation() {
               >
                 <Link
                   href={item.path}
-                  className={`relative px-3 py-2 transition-all duration-300 hover:text-primary rounded-md hover:bg-primary/5 ${
-                    pathname === item.path ? 'text-primary' : 'text-muted-foreground'
-                  }`}
+                  className={`relative px-4 py-2 text-sm font-medium transition-colors duration-300 rounded-full hover:bg-gray-100 hover:text-black ${pathname === item.path ? 'text-black bg-gray-100 font-semibold' : 'text-gray-600'
+                    }`}
                 >
                   {item.label}
-                  {pathname === item.path && (
-                    <motion.div
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-primary/60 rounded-full"
-                      layoutId="navbar-indicator"
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                    />
-                  )}
                 </Link>
               </motion.div>
             ))}
@@ -84,7 +74,7 @@ export default function Navigation() {
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden hover:bg-primary/10"
+              className="md:hidden text-gray-900 hover:bg-gray-100"
               onClick={() => setIsOpen(!isOpen)}
             >
               <motion.div
@@ -108,7 +98,7 @@ export default function Navigation() {
             duration: 0.3,
             ease: "easeInOut"
           }}
-          className="md:hidden border-t overflow-hidden"
+          className="md:hidden border-t border-gray-200 overflow-hidden bg-white"
         >
           <div className="py-4 space-y-2">
             {navItems.map((item, index) => (
@@ -126,9 +116,8 @@ export default function Navigation() {
               >
                 <Link
                   href={item.path}
-                  className={`block px-3 py-2 transition-all duration-300 hover:text-primary hover:bg-primary/5 rounded-md ${
-                    pathname === item.path ? 'text-primary bg-primary/5' : 'text-muted-foreground'
-                  }`}
+                  className={`block px-3 py-2 transition-all duration-300 hover:text-black hover:bg-gray-100 rounded-md ${pathname === item.path ? 'text-black bg-gray-100' : 'text-gray-600'
+                    }`}
                   onClick={() => setIsOpen(false)}
                 >
                   {item.label}
